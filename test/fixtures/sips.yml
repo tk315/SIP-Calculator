@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  invested_amount: 1
+  estimated_returns: 1
+  total_value: 1
+  owner_id: 1
+
+two:
+  invested_amount: 1
+  estimated_returns: 1
+  total_value: 1
+  owner_id: 1
