@@ -10,10 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_23_101040) do
+ActiveRecord::Schema.define(version: 2022_03_24_110018) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "lumpsums", force: :cascade do |t|
+    t.integer "invested_amount"
+    t.integer "estimated_returns"
+    t.integer "total_value"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_lumpsums_on_user_id"
+  end
+
+  create_table "sips", force: :cascade do |t|
+    t.integer "invested_amount"
+    t.integer "estimated_returns"
+    t.integer "total_value"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sips_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.text "email"
@@ -21,9 +41,11 @@ ActiveRecord::Schema.define(version: 2022_03_23_101040) do
     t.text "password"
     t.boolean "email_verified"
     t.boolean "phone_verified"
-    t.integer "no_of_attempts"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "user_type"
   end
 
+  add_foreign_key "lumpsums", "users"
+  add_foreign_key "sips", "users"
 end
