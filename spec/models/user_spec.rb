@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-
   before :each do
-    @user = User.new(email: "pqr@gmail.com", phone: "7777777777", password: "pass@123", user_type: "paid")
+    @user = User.new(name: 'pqr', email: 'pqr@gmail.com', phone: '7777777777', password: 'pass@123', state: 'Rajasthan', city: 'Jaipur',dob: '2000-08-24', role: 1, pan: 'AZDLP5967L')
   end
 
   it 'email should be present' do
