@@ -4,22 +4,20 @@ module API
       include API::V1::Defaults
       helpers API::V1::Helpers::Sip
 
-      resource "fetch-all-sip" do
+      resource 'sip' do
         desc 'Return all sips'
-        get do
+        get '/fetch-all-sip' do
           present display_all_sips, with: API::V1::Entities::Sip
         end
-      end
 
-      resource "create-a-sip" do
         desc 'Create a sip'
         params do
           requires :monthly_investment, type: Integer, desc: 'Monthly investment of the user'
           requires :expected_return_rate, type: Float, desc: 'Expected return rate of the user'
-          requires :time_period, type: Integer, desc: 'Time period for which user is investing'
+          requires :time_period, type: Integer, desc: 'Years for which user is investing'
         end
-        post do
-          present create_new_sip(params), with: API::V1::Entities::Sip
+        post '/create-sip' do
+          present create_new_sip(permitted_params[:monthly_investment], permitted_params[:expected_return_rate], permitted_params[:time_period]), with: API::V1::Entities::Sip
         end
       end
     end

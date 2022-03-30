@@ -4,14 +4,12 @@ module API
       include API::V1::Defaults
       helpers API::V1::Helpers::User
 
-      resource "fetch-all-user" do
+      resource 'user' do
         desc 'Return all Users'
-        get do
+        get '/fetch-all-user' do
           present display_all_users, with: API::V1::Entities::User
         end
-      end
 
-      resource "new-user" do
         desc 'Create a user'
         params do
           requires :name, type: String, desc: 'Name of the user'
@@ -23,8 +21,8 @@ module API
           requires :password, type: String, desc: 'Password of the user'
           requires :dob, type: String, desc: 'Date of birth of the user'
         end
-        post do
-          present create_new_user(params), with: API::V1::Entities::User
+        post '/create-user' do
+          present create_new_user(permitted_params[:name], permitted_params[:email], permitted_params[:phone], permitted_params[:state], permitted_params[:city], permitted_params[:pan], permitted_params[:password], permitted_params[:dob]), with: API::V1::Entities::User
         end
       end
     end
