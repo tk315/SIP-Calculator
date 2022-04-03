@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.0'
 
 gem 'grape'
+gem 'grape-entity'
 gem 'pg'
 gem 'grape_on_rails_routes'
 gem 'faker'
