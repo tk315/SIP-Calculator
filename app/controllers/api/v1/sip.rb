@@ -17,7 +17,7 @@ module API
           requires :time_period, type: Integer, desc: 'Years for which user is investing'
         end
         post '/create-sip' do
-          present create_new_sip(permitted_params[:monthly_investment], permitted_params[:expected_return_rate], permitted_params[:time_period]), with: API::V1::Entities::Sip
+          present create_new_sip(permitted_params), with: API::V1::Entities::Sip
         end
       end
     end

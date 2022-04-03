@@ -22,7 +22,7 @@ module API
           requires :dob, type: String, desc: 'Date of birth of the user'
         end
         post '/create-user' do
-          present create_new_user(permitted_params[:name], permitted_params[:email], permitted_params[:phone], permitted_params[:state], permitted_params[:city], permitted_params[:pan], permitted_params[:password], permitted_params[:dob]), with: API::V1::Entities::User
+          present create_new_user(permitted_params), with: API::V1::Entities::User
         end
       end
     end

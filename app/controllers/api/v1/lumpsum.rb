@@ -17,7 +17,7 @@ module API
           requires :time_period, type: Integer, desc: 'Years for which user is investing'
         end
         post '/create-lumpsum' do
-          present create_new_lumpsum(permitted_params[:total_investment], params[:expected_return_rate], params[:time_period]), with: API::V1::Entities::Lumpsum
+          present create_new_lumpsum(permitted_params), with: API::V1::Entities::Lumpsum
         end
       end
     end
